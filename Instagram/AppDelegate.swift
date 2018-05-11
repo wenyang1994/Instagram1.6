@@ -13,10 +13,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+//        AVOSCloud.setApplicationId("Ke19y6F2yYX73Kyl5MoWdgEq-gzGzoHsz", clientKey: "bip24y5x1d47yo1AIVetigJy")
+        
+        AVOSCloud.setApplicationId("uTGLye9MJXz8kFDq3HK5hjA6-gzGzoHsz", clientKey: "Nzy3IX91rG8iSJk7Cx8NQStf")
+        AVAnalytics.trackAppOpened(launchOptions: launchOptions)
+        
+        login()
+        
+        
+        
+        
         // Override point for customization after application launch.
         return true
+    }
+    
+    func login(){
+        let username : String? = UserDefaults.standard.string(forKey: "username")
+        if username != nil{
+            let storyboard : UIStoryboard = UIStoryboard.init(name: "Main", bundle: nil)
+            let myTabBar = storyboard.instantiateViewController(withIdentifier: "TabBar")
+            window?.rootViewController = myTabBar
+            
+        }
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
